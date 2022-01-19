@@ -75,6 +75,11 @@ qiime tools import --type 'FeatureData[Taxonomy]' \
 
 # OLD = /scratch_vol1/fungi/Diversity_in_Mare_yam_crop/98_database_files/ITS2/Sequence-UNITE-V7-S-2017.12.01-dynamic.fasta
 
+# ITS1 champi, les amorces de White et al., 1990:
+# fwd: 5′-GGAAGTAAAAGTCGTAACAAGG-3′
+# rev:  5′-GCTGCGTTCTTCATCGATGC-3′
+
+
 qiime tools import --type 'FeatureData[Sequence]' \
   --input-path /scratch_vol1/fungi/Pycnandra/98_database_files/ITS/sh_refs_qiime_ver8_dynamic_s_10.05.2021.fasta \
   --output-path taxonomy/DataSeq.qza
@@ -289,12 +294,20 @@ cp /scratch_vol1/fungi/Diversity_in_Mare_yam_crop/98_database_files/V4/Silva-v13
 #        --o-reads taxonomy/RefSeq.qza     
 
 # BIOINDIC primers
+#qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
+#        --p-f-primer 'GTGCCAGCMGCCGCGGTAA' \
+#        --p-r-primer 'GGACTACHVGGGTWTCTAAT' \
+#        --o-reads taxonomy/RefSeq.qza             
+        
+        
+# V3: 5′-CCTACGGGNGGCWGCAG-3′ (Klindworth et al., 2013)
+# V5: 5'-GGGTTGCGCTCGTTGCGGG-3' (Sacchi et al., 2002)
+
 qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
-        --p-f-primer 'GTGCCAGCMGCCGCGGTAA' \
-        --p-r-primer 'GGACTACHVGGGTWTCTAAT' \
+        --p-f-primer 'CCTACGGGNGGCWGCAG' \
+        --p-r-primer 'GGGTTGCGCTCGTTGCGGG' \
         --o-reads taxonomy/RefSeq.qza             
         
-
 
 # Aim: Create a scikit-learn naive_bayes classifier for reads
 
