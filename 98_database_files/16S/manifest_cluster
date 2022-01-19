@@ -1,4 +1,4 @@
-'sample-id'	'absolute-filepath'	'direction'
+'sample-id', 'absolute-filepath', 'direction'
 BRF1	/scratch_vol1/fungi/Solanum_crop_diversity/03_cleaned_data/DATAOUTPUT_16S/BRFB1.V3V5.merged_for_profiling.fastq.gz	forward
 BRF2	/scratch_vol1/fungi/Solanum_crop_diversity/03_cleaned_data/DATAOUTPUT_16S/BRFB2.V3V5.merged_for_profiling.fastq.gz	forward
 BRF3	/scratch_vol1/fungi/Solanum_crop_diversity/03_cleaned_data/DATAOUTPUT_16S/BRFB3.V3V5.merged_for_profiling.fastq.gz	forward
