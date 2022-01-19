@@ -41,23 +41,23 @@ conda activate qiime2-2021.4
 mkdir -p $OUTPUT_ITS/core
 mkdir -p $OUTPUT_ITS/visual
 
-qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' \
+qiime tools import --type 'SampleData[SequencesWithQuality]' \
 			    --input-path  $MANIFEST_FUNGI \
 			    --output-path $OUTPUT_ITS/core/demux.qza \
-			    --input-format PairedEndFastqManifestPhred33V2
+			    --input-format SingleEndFastqManifestPhred33
 
 
 # For negative sample
-qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' \
-			    --input-path  $MANIFEST_FUNGI_NEG \
-			    --output-path $OUTPUT_ITS/core/demux_neg.qza \
-			    --input-format PairedEndFastqManifestPhred33V2
+#qiime tools import --type 'SampleData[SequencesWithQuality]' \
+#			    --input-path  $MANIFEST_FUNGI_NEG \
+#			    --output-path $OUTPUT_ITS/core/demux_neg.qza \
+#			    --input-format SingleEndFastqManifestPhred33
 
 
 cd $OUTPUT_ITS
 
 qiime demux summarize --i-data core/demux.qza --o-visualization visual/demux.qzv
-qiime demux summarize --i-data core/demux_neg.qza --o-visualization visual/demux_neg.qzv
+#qiime demux summarize --i-data core/demux_neg.qza --o-visualization visual/demux_neg.qzv
 
 # for vizualisation :
 # https://view.qiime2.org
@@ -65,43 +65,43 @@ qiime demux summarize --i-data core/demux_neg.qza --o-visualization visual/demux
 qiime tools export --input-path visual/demux.qzv --output-path export/visual/demux
 qiime tools export --input-path core/demux.qza --output-path export/core/demux
 
-qiime tools export --input-path visual/demux_neg.qzv --output-path export/visual/demux_neg
-qiime tools export --input-path core/demux_neg.qza --output-path export/core/demux_neg
+#qiime tools export --input-path visual/demux_neg.qzv --output-path export/visual/demux_neg
+#qiime tools export --input-path core/demux_neg.qza --output-path export/core/demux_neg
 
 
 ###############################################################
 ### For Bacteria
 ###############################################################
 
-# cd $DATADIRECTORY_16S
-# 
-# eval "$(conda shell.bash hook)"
-# conda activate qiime2-2021.4
-# 
-# # Make the directory (mkdir) only if not existe already(-p)
-# mkdir -p $OUTPUT_16S/core
-# mkdir -p $OUTPUT_16S/visual
-# 
-# qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' \
-# 			    --input-path  $MANIFEST_BACTERIA \
-# 			    --output-path $OUTPUT_16S/core/demux.qza \
-# 			    --input-format PairedEndFastqManifestPhred33V2
-# 
-# qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' \
-# 			    --input-path  $MANIFEST_BACTERIA_NEG \
-# 			    --output-path $OUTPUT_16S/core/demux_neg.qza \
-# 			    --input-format PairedEndFastqManifestPhred33V2
-# 
-# cd $OUTPUT_16S
-# 
-# qiime demux summarize --i-data core/demux.qza --o-visualization visual/demux.qzv
-# qiime demux summarize --i-data core/demux_neg.qza --o-visualization visual/demux_neg.qzv
-# 
-# # for vizualisation :
-# # https://view.qiime2.org
-# 
-# qiime tools export --input-path visual/demux.qzv --output-path export/visual/demux
-# qiime tools export --input-path core/demux.qza --output-path export/core/demux
+cd $DATADIRECTORY_16S
+
+eval "$(conda shell.bash hook)"
+conda activate qiime2-2021.4
+
+# Make the directory (mkdir) only if not existe already(-p)
+mkdir -p $OUTPUT_16S/core
+mkdir -p $OUTPUT_16S/visual
+
+qiime tools import --type 'SampleData[SequencesWithQuality]' \
+			    --input-path  $MANIFEST_BACTERIA \
+			    --output-path $OUTPUT_16S/core/demux.qza \
+			    --input-format SingleEndFastqManifestPhred33
+
+#qiime tools import --type 'SampleData[SequencesWithQuality]' \
+#			    --input-path  $MANIFEST_BACTERIA_NEG \
+#			    --output-path $OUTPUT_16S/core/demux_neg.qza \
+#			    --input-format SingleEndFastqManifestPhred33
+
+cd $OUTPUT_16S
+
+qiime demux summarize --i-data core/demux.qza --o-visualization visual/demux.qzv
+#qiime demux summarize --i-data core/demux_neg.qza --o-visualization visual/demux_neg.qzv
+
+# for vizualisation :
+# https://view.qiime2.org
+
+qiime tools export --input-path visual/demux.qzv --output-path export/visual/demux
+qiime tools export --input-path core/demux.qza --output-path export/core/demux
 # 
 # qiime tools export --input-path visual/demux_neg.qzv --output-path export/visual/demux_neg
 # qiime tools export --input-path core/demux_neg.qza --output-path export/core/demux_neg
