@@ -50,7 +50,7 @@ mkdir -p export/pcoa
 qiime diversity core-metrics-phylogenetic \
        --i-phylogeny tree/rooted-tree.qza \
        --i-table core/ConTable.qza \
-       --p-sampling-depth 7401 \
+       --p-sampling-depth 106083 \
        --m-metadata-file $METADATA_ITS/sample-metadata.tsv \
        --o-rarefied-table core/RarTable.qza \
        --o-observed-features-vector core/Vector-observed_asv.qza \
