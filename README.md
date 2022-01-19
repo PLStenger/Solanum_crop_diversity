@@ -25,8 +25,21 @@ First, open your terminal. Then, run these two command lines :
     time nohup bash 000_run_all_pipeline_in_one_script.sh &> 000_run_all_pipeline_in_one_script.out
   
     time nohup bash 00_quality_check_by_FastQC.sh &> 00_quality_check_by_FastQC.out
-    >real	18m10,951s
-    >user	29m29,521s
-    >sys	1m23,992s
+    >real	11m16,059s
+    >user	15m28,106s
+    >sys  0m46,657s
+  
+    time nohup bash 02_trimmomatic_q30.sh &> 02_trimmomatic_q30.out
+    >
+    > NOT PAIRED END DATA !!
+    >
+  
+    time nohup bash 04_qiime2_import_SE.sh &> 04_qiime2_import_SE.out
+    >real	1m30,108s
+    >user	1m34,436s
+    >sys	0m19,644s
+  
+    time nohup bash 05_qiime2_denoise_SE.sh &> 05_qiime2_denoise_SE.out
+    >
 
 </details> 
