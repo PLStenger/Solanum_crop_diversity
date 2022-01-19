@@ -43,14 +43,12 @@ NEG_CONTROL=/Users/pierre-louisstenger/Documents/PostDoc_02_MetaBarcoding_IAC/02
  
  # https://github.com/benjjneb/dada2/issues/477
  
- qiime dada2 denoise-paired --i-demultiplexed-seqs core/demux.qza \
+ qiime dada2 denoise-single --i-demultiplexed-seqs core/demux.qza \
  --o-table core/Table.qza  \
  --o-representative-sequences core/RepSeq.qza \
  --o-denoising-stats core/Stats.qza \
- --p-trim-left-f 0 \
- --p-trim-left-r 0 \
- --p-trunc-len-f 0 \
- --p-trunc-len-r 0 \
+ --p-trunc-len 0 \
+ --p-trunc-q 0 \
  --p-n-threads 4   
  
 
@@ -166,14 +164,12 @@ conda activate qiime2-2021.4
 
 # https://github.com/benjjneb/dada2/issues/477
 
-qiime dada2 denoise-paired --i-demultiplexed-seqs core/demux.qza \
+qiime dada2 denoise-single --i-demultiplexed-seqs core/demux.qza \
 --o-table core/Table.qza  \
 --o-representative-sequences core/RepSeq.qza \
 --o-denoising-stats core/Stats.qza \
---p-trim-left-f 0 \
---p-trim-left-r 0 \
---p-trunc-len-f 0 \
---p-trunc-len-r 0 \
+--p-trunc-len 0 \
+--p-trunc-q 0 \
 --p-n-threads 4  
 
 
