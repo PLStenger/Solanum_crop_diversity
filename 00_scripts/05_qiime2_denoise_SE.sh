@@ -7,7 +7,7 @@ DATADIRECTORY_16S=/scratch_vol1/fungi/Solanum_crop_diversity/05_QIIME2/16S/
 METADATA_FUNGI=/scratch_vol1/fungi/Solanum_crop_diversity/98_database_files/ITS/sample-metadata.tsv
 METADATA_BACTERIA=/scratch_vol1/fungi/Solanum_crop_diversity/98_database_files/16S/sample-metadata.tsv
 
-NEG_CONTROL=/scratch_vol1/fungi/Solanum_crop_diversity/99_contamination/contamination_seq.qza
+NEG_CONTROL=/scratch_vol1/fungi/Solanum_crop_diversity/99_contamination
 
 # pathways in local:
 #DATADIRECTORY_ITS=/Users/pierre-louisstenger/Documents/PostDoc_02_MetaBarcoding_IAC/02_Data/20_Solanum_crop_diversity/Solanum_crop_diversity/05_QIIME2/Paired_end/ITS2/
@@ -65,8 +65,21 @@ NEG_CONTROL=/scratch_vol1/fungi/Solanum_crop_diversity/99_contamination/contamin
  
  # Here --i-reference-sequences correspond to the negative control sample (if you don't have any, like here, take another one from an old project, the one here is from the same sequencing line (but not same project))
  
+ # 001_mini_pipeline_for_contaminated_sequences
+ 
+# CATCH some ASV Solanum_crop_diversity/05_QIIME2/ITS/export/core/RepSeq
+# Blast them in order to catch non necessaries ASV (uncultured, unknown, etc..)
+# Paste them in a contamination_seq.fasta file, then :
+ 
+ qiime tools import \
+  --input-path $NEG_CONTROL/contamination_seq.fasta \
+  --output-path $NEG_CONTROL/contamination_seq.qza \
+  --type 'FeatureData[Sequence]'
+
+ 
+ 
  qiime quality-control exclude-seqs --i-query-sequences core/RepSeq.qza \
-       					     --i-reference-sequences $NEG_CONTROL\
+       					     --i-reference-sequences $NEG_CONTROL/contamination_seq.qza\
        					     --p-method vsearch \
        					     --p-threads 6 \
        					     --p-perc-identity 1.00 \
